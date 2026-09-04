@@ -3,9 +3,13 @@
 
 # Bibliotecas
 from datetime import datetime
+import json
 
 # Nome do arquivo que armazenará os registros
 arquivo_registro = "registros_colonia.txt"
+
+# Nome do arquivo que armazenará os dados estruturados da colônia
+arquivo_dados = "dados_colonia.json"
 
 # Função responsável por cadastrar um novo registro da colônia
 def cadastrar_registro():
@@ -90,3 +94,29 @@ def consultar_registros():
 
     except FileNotFoundError:
         print("\n[NCAS] - Nenhum registro foi cadastrado até o momento.")
+
+# Função responsável pelo carregamento dos dados armazenados no arquivo JSON
+def carregar_dados_json():
+    try:
+        with open(arquivo_dados, "r", encoding="utf-8") as arquivo: # Abrindo JSON em modo read
+            dados = json.load(arquivo) # Transformando JSON em dicionário e listas em Python
+
+        return dados
+     
+    except FileNotFoundError:
+        print("\n[ERRO] - O arquivo dados_colonia.json não foi encontrado.")
+        return None 
+    
+    except json.JSONDecodeError:
+        print("\n[ERRO] - O arquivo JSON possui uma estrutura inválida.")
+        return None
+    
+# Função responsável por salver os dados no arquivo JSON
+def salvar_dados_json(dados):
+    with open(arquivo_dados, "w", encoding="utf-8") as arquivo: # Abrindo em modo writing
+        json.dump( #JSON transforma estrutura do Python em dados no formato JSON e grava no arquivo.
+            dados,
+            arquivo,
+            ensure_ascii=False, # Para não alterar a palavra com símbolos
+            indent=4 # Para deixar estruturado com dicionário
+        )
