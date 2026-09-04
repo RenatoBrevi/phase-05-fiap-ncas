@@ -25,7 +25,7 @@ def cadastrar_registro():
     ]
 
     # Abrindo o arquivo em modo append 
-    with open(arquivo_registro, "a", enconding="utf-8") as arquivo:
+    with open(arquivo_registro, "a", encoding="utf-8") as arquivo:
         arquivo.writelines(registro) # Gravando os elementos da lista no arquivo.
 
     print("\n[NCAS] - Registro cadastrado com sucesso.")
@@ -38,7 +38,7 @@ def consultar_registros():
 
     try:
         # Tentando abrir o arquivo no modo read
-        with open(arquivo_registro, "r", enconding="utf-8") as arquivo:
+        with open(arquivo_registro, "r", encoding="utf-8") as arquivo:
             linhas = arquivo.readlines() # recuperando as linhas do arquivo e armazenando o resultadona lista
 
         # Verificando se o arquivo está vazio
