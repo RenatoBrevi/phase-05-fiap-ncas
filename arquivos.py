@@ -1,6 +1,9 @@
 # Esse arquivo será responsável pelas operações referente aos arquivos de texto
 # sendo utilizado como funções dentro do codigo_fonte.py
 
+# Bibliotecas
+from datetime import datetime
+
 # Nome do arquivo que armazenará os registros
 arquivo_registro = "registros_colonia.txt"
 
@@ -13,15 +16,30 @@ def cadastrar_registro():
     # Coletando as informações do registro
     modulo = input("\nInforme o módulo da colônia: ")
     tipo = input("Informe o tipo da ocorrência: ")
+    prioridade = input("Informe a prioridade (Baixa/Média/Alta/Crítica): ")
+    responsavel = input("Informe o responsável pelo registro: ")
     descricao = input("Descreva a ocorrência: ")
+
+    # Obtendo a data e hora atual do computador
+    data_hora_atual = datetime.now()
+
+    # Forçando o formato que será apresentado
+    data_hora_formatada = data_hora_atual.strftime("%d/%m/%Y %H:%M:%S") # day/month/year - hour/minute/second
+
+    # Status do registro
+    status = "Aberto"
 
     # Cada elemento da lista representa uma linha que será gravada posteriormente no arquivo de texto.
     registro = [
-        "\n" + "=" * 50 + "\n",
+        "\n" + "=" * 60 + "\n",
+        f"Data e Hora: {data_hora_formatada}\n"
         f"Módulo: {modulo}\n",
         f"Tipo de Ocorrência: {tipo}\n",
+        f"Prioridade: {prioridade}\n",
+        f"Responsável: {responsavel}\n",
+        f"Status: {status}\n",
         f"Descrição: {descricao}\n",
-        "=" * 50 + "\n"
+        "=" * 60 + "\n"
     ]
 
     # Abrindo o arquivo em modo append 
