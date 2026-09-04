@@ -16,7 +16,27 @@ def cadastrar_registro():
     # Coletando as informações do registro
     modulo = input("\nInforme o módulo da colônia: ")
     tipo = input("Informe o tipo da ocorrência: ")
-    prioridade = input("Informe a prioridade (Baixa/Média/Alta/Crítica): ")
+    
+    # Forçando a prioridade para não ser possível outra opção
+    while True:
+        prioridade = input("Informe a prioridade (Baixa/Média/Alta/Crítica): ").strip().lower()
+
+        if prioridade == "baixa":
+            prioridade = "Baixa"
+            break
+        elif prioridade == "media" or prioridade == "média":
+            prioridade = "Média"
+            break
+        elif prioridade == "alta":
+            prioridade = "Alta"
+            break 
+        elif prioridade == "critica" or prioridade == "crítica":
+            prioridade = "Crítica"
+            break
+        else:
+            print("\n[ERRO]: Prioridade inválida")
+            print("Digite apenas: Baixa, Média, Alta ou Crítica.\n")
+
     responsavel = input("Informe o responsável pelo registro: ")
     descricao = input("Descreva a ocorrência: ")
 
