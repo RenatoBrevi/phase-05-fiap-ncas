@@ -20,3 +20,23 @@ Responsável: Operador 69
 Status: Aberto
 Descrição: Oscilação detectada no sistema de alimentação
 ============================================================
+
+============================================================
+Data e Hora: 04/09/2026 16:09:38
+Módulo: Suporte à Vida
+Tipo de Ocorrência: Manutenção
+Prioridade: Baixa
+Responsável: Operador 69
+Status: Aberto
+Descrição: Manutenção de cama hospitalar
+============================================================
+
+============================================================
+Data e Hora: 04/09/2026 16:12:01
+Módulo: Energia
+Tipo de Ocorrência: Consumo alto de energia
+Prioridade: Alta
+Responsável: Operador 69
+Status: Aberto
+Descrição: Energia utilizada superior a energia gerada
+============================================================
