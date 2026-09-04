@@ -21,6 +21,36 @@
             "nome": "Comunicações",
             "status": "Operacional",
             "essencial": true
+        },
+        {
+            "id": 4,
+            "nome": "Habitação",
+            "status": "Operacional",
+            "essencial": true
+        },
+        {
+            "id": 5,
+            "nome": "Laboratório",
+            "status": "Operacional",
+            "essencial": false
+        },
+        {
+            "id": 6,
+            "nome": "Armazenamento",
+            "status": "Operacional",
+            "essencial": false
+        },
+        {
+            "id": 7,
+            "nome": "Segurança",
+            "status": "Operacional",
+            "essencial": true
+        },
+        {
+            "id": 8,
+            "nome": "Cultivo e Alimentos",
+            "status": "Operacional",
+            "essencial": true
         }
     ],
     "alertas": [],
