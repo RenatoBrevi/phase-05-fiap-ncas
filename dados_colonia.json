@@ -1,0 +1,29 @@
+{
+    "colonia": {
+        "nome": "Aurora Siger",
+        "status_geral": "Operacional"
+    },
+    "modulos": [
+        {
+            "id": 1,
+            "nome": "Energia",
+            "status": "Operacional",
+            "essencial": true
+        },
+        {
+            "id": 2,
+            "nome": "Suporte à Vida",
+            "status": "Operaconal",
+            "essencial": true
+        },
+        {
+            "id": 3,
+            "nome": "Comunicações",
+            "status": "Operacional",
+            "essencial": true
+        }
+    ],
+    "alertas": [],
+    "solicitacoes": [],
+    "interacoes": []
+}
