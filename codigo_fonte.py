@@ -3,6 +3,9 @@
 # Bibliotecas
 import os
 
+# Importando funções
+from arquivos import cadastrar_registro, consultar_registros
+
 # Função para limpar a tela no terminal
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear") # cls para limpar no Windows e clear no Linux/macOS
@@ -40,11 +43,9 @@ def executar_sistema():
         opcao = input("\nDigite a opção desejada: ")
 
         if opcao == "1":
-            print("\nCadastro de Registros")
-            print("Será implementado nas próximas etapas")
+            cadastrar_registro()
         elif opcao == "2":
-            print("\nConsulta de Registros")
-            print("Será implementado nas próximas etapas")
+            consultar_registros()
         elif opcao == "3":
             print("\nConsulta aos Dados da Colônia")
             print("Será implementado nas próximas etapas")
@@ -71,3 +72,4 @@ def executar_sistema():
 # Condição que verifica se o arquivo está sendo executado diretamente
 if __name__ == "__main__":
     executar_sistema()
+
