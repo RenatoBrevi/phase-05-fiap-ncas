@@ -220,3 +220,42 @@ def cadastrar_alerta():
 
     print("\n[NCAS] - Alerta operacional cadastrado com sucesso.")
     print(f"[NCAS] - ID do alerta: {novo_id}")
+
+# Função responsável por consultar os alertas armazenados no arquivo dados_colonia.json
+def consultar_alertas():
+    print("\n" + "=" * 50)
+    print("########## ALERTAS OPERACIONAIS ##########")
+    print("=" * 50)
+    
+    # Carregando os dados armazenados no arquivo JSON
+    dados = carregar_dados_json()
+
+    # Se dados não tiver nada, encerra a função
+    if dados is None:
+        return
+    
+    alertas = dados["alertas"] # Recuperando a lsita de alertas do dicionário
+
+    # Verificando se a lista está vazia
+    if len(alertas) == 0:
+        print("\n[NCAS] - Nenhum alerta operacional foi cadastrado.")
+        return
+    
+    # Percorrendo todos os alertas armazenados.
+    for alerta in alertas:
+        print("\n" + "=" * 60)
+        print(f"ID: {alerta['id']}")
+        print(f"Módulo: {alerta['modulo']}")
+        print(f"Tipo: {alerta['tipo']}")
+        print(f"Prioridade: {alerta['prioridade']}")
+
+        if alerta["critico"]:
+            print("Crítico: Sim")
+        else:
+            print("Crítico: Não")
+
+        print(f"Data e Hora: {alerta['data_hora']}")
+        print(f"Status: {alerta['status']}")
+        print(f"Mensagem: {alerta['mensagem']}")
+
+        print("=" * 60)
