@@ -13,7 +13,7 @@
         {
             "id": 2,
             "nome": "Suporte à Vida",
-            "status": "Operaconal",
+            "status": "Operacional",
             "essencial": true
         },
         {
@@ -53,7 +53,28 @@
             "essencial": true
         }
     ],
-    "alertas": [],
+    "alertas": [
+        {
+            "id": 1,
+            "modulo": "Energia",
+            "tipo": "Consumo elevado",
+            "prioridade": "Alta",
+            "critico": false,
+            "data_hora": "05/09/2026 22:21:55",
+            "mensagem": "Consumo superior à geração energética atual",
+            "status": "Aberto"
+        },
+        {
+            "id": 2,
+            "modulo": "Suporte à Vida",
+            "tipo": "Oxigênio",
+            "prioridade": "Crítica",
+            "critico": true,
+            "data_hora": "05/09/2026 22:24:27",
+            "mensagem": "Diminuíção do oxigênio devido a baixa energia",
+            "status": "Aberto"
+        }
+    ],
     "solicitacoes": [],
     "interacoes": []
 }

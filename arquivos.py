@@ -120,3 +120,103 @@ def salvar_dados_json(dados):
             ensure_ascii=False, # Para não alterar a palavra com símbolos
             indent=4 # Para deixar estruturado com dicionário
         )
+
+# Função responsável por cadastrar um novo alerta operacional dentro do arquivo dados_colonia.json
+def cadastrar_alerta():
+    print("\n" + "=" * 50)
+    print("########## CADASTRO DE ALERTA ##########")
+    print("=" * 50)
+
+    dados = carregar_dados_json() # Carregando os dados atuais do arquivo JSON.
+
+    if dados is None: # Caso os dados não retorne algo durante a leitura, a função será encerrada
+        return
+    
+    # Exibindo os módulos disponíveis
+    print("\nMódulos da Aurora Siger:\n")
+
+    # Percorrendo os módulos armazenados no JSON
+    for modulo in dados["modulos"]:
+        print(f"{modulo['id']} - {modulo['nome']}")
+
+    # Escolha e validação do módulo
+    while True:
+        opcao_modulo = input("\nInforme o número do módulo relacionado ao alerta: ").strip()
+
+        modulo_escolhido = None # Inicialmente o nenhum módulo será encontrado
+
+        # Percorrendo os módulos procurando o ID informado.
+        for modulo in dados["modulos"]:
+            if opcao_modulo == str(modulo["id"]):
+                modulo_escolhido = modulo
+                break 
+
+        # Se um módulo válido for encontrado encerra-se o while
+        if modulo_escolhido is not None:
+            break 
+
+        print("\n[ERRO] - Módulo inválido. Escolha uma opção da lista.")
+
+    # Informações do alerta
+    tipo = input("\nInforme o tipo do alerta: ")
+
+    # Validação da prioridade
+    while True:
+        prioridade = input("Informe a prioridade (Baixa/Média/Alta/Crítica): ").strip().lower()
+
+        if prioridade == "baixa":
+            prioridade = "Baixa"
+            break
+        elif prioridade == "media" or prioridade == "média":
+            prioridade = "Média"
+            break
+        elif prioridade == "alta":
+            prioridade = "Alta"
+            break 
+        elif prioridade == "critica" or prioridade == "crítica":
+            prioridade = "Crítica"
+            break
+        else:
+            print("\n[ERRO]: Prioridade inválida")
+            print("Digite apenas: Baixa, Média, Alta ou Crítica.\n")
+    
+    mensagem = input("Descreva o alerta operacional: ")
+
+    # Data e hora
+    data_hora_atual = datetime.now() # Obtendo horário automático
+    data_hora_formatada = data_hora_atual.strftime("%d/%m/%Y %H:%M:%S")
+
+    # Gerando o ID do laerta
+    ultimo_id = 0 # Inicialmente o não existem alertas
+
+    # Percorrendo os alertas já armazenados
+    for alerta in dados["alertas"]: # Se o id encontrado for maior que o último conhecido, atualiza
+        if alerta["id"] > ultimo_id:
+            ultimo_id = alerta["id"]
+    
+    novo_id = ultimo_id + 1 # Novo alerta recebe o próximo número disponível.
+
+    # Definindo se o alerta é crítico
+    critico = prioridade == "Crítica" # Retornará True quando a prioridade for crítica
+
+    status = "Aberto" # Todo alerta novo começa com o status "Aberto"
+
+    # Criando dicionário do alerta
+    novo_alerta = {
+        "id": novo_id,
+        "modulo": modulo_escolhido["nome"],
+        "tipo": tipo,
+        "prioridade": prioridade,
+        "critico": critico,
+        "data_hora": data_hora_formatada,
+        "mensagem": mensagem,
+        "status": status
+    }
+
+    # Adicionando o alerta ao JSON
+    dados["alertas"].append(novo_alerta)
+
+    salvar_dados_json(dados) # Regravando o arquivo JSON com os dados atualiados
+
+    print("\n[NCAS] - Alerta operacional cadastrado com sucesso.")
+    print(f"[NCAS] - ID do alerta: {novo_id}")
