@@ -4,7 +4,12 @@
 import os
 
 # Importando funções
-from arquivos import cadastrar_registro, consultar_registros, cadastrar_alerta, consultar_alertas
+from arquivos import (cadastrar_registro, 
+                      consultar_registros, 
+                      cadastrar_alerta, 
+                      consultar_alertas,
+                      consultar_dados_colonia
+)
 
 # Função para limpar a tela no terminal
 def limpar_tela():
@@ -73,8 +78,7 @@ def executar_sistema():
         elif opcao == "2":
             consultar_registros()
         elif opcao == "3":
-            print("\nConsulta aos Dados da Colônia")
-            print("Será implementado nas próximas etapas")
+            consultar_dados_colonia()
         elif opcao == "4":
             gerenciar_alertas()
             continue # Faz com que o Python retorne ao while True principal

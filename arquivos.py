@@ -121,6 +121,42 @@ def salvar_dados_json(dados):
             indent=4 # Para deixar estruturado com dicionário
         )
 
+# Função responsável por consultar e exibir os dados gerais da Aurora Siger no JSON
+def consultar_dados_colonia():
+    print("\n" + "=" * 50)
+    print("########## DADOS DA AURORA SIGER #########")
+    print("=" * 50)
+
+    dados = carregar_dados_json() # Carregando conteúdo do dados_colonia.json
+
+    if dados is None: # Se houver problema em carregar o arquivo, retornará None
+        return
+    
+    # Dados gerais da colônia
+    colonia = dados["colonia"] # Puxando o dicionário
+
+    print("\nDADOS GERAIS")
+    print("-" * 50)
+
+    print(f"Nome da Colônia: {colonia['nome']}")
+    print(f"Status Geral: {colonia['status_geral']}")
+
+    # Módulos da colôni
+    print("\nMÓDULOS DA COLÔNIA")
+    print("-" * 50)
+
+    for modulo in dados["modulos"]:
+        print(f"\nID: {modulo['id']}")
+        print(f"Nome: {modulo['nome']}")
+        print(f"Status: {modulo['status']}")
+
+        if modulo["essencial"]:
+            print("Essencial: Sim")
+        else:
+            print("Essencial: Não")
+        
+        print("-" * 50)
+
 # Função responsável por cadastrar um novo alerta operacional dentro do arquivo dados_colonia.json
 def cadastrar_alerta():
     print("\n" + "=" * 50)
