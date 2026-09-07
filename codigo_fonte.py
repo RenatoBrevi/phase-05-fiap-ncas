@@ -8,8 +8,12 @@ from arquivos import (cadastrar_registro,
                       consultar_registros, 
                       cadastrar_alerta, 
                       consultar_alertas,
-                      consultar_dados_colonia
+                      consultar_dados_colonia,
+                      carregar_dados_json
 )
+
+# Importando regra lógica NCAS
+from regras import analisar_alerta_operacional
 
 # Função para limpar a tela no terminal
 def limpar_tela():
@@ -40,6 +44,7 @@ def exibir_menu_alertas():
     print("\n######### ALERTAS OPERACIONAIS ##########\n")
     print("1 - Cadastrar Alerta Operacional")
     print("2 - Consultar Alertas Cadastrados")
+    print("3 - Analisar Alerta Operacional")
     print("0 - Voltar ao Menu Principal")
 
 # Função para controlar o submenu relacionado aos alertas operacionais
@@ -55,6 +60,10 @@ def gerenciar_alertas():
             cadastrar_alerta()
         elif opcao_alerta == "2":
             consultar_alertas()
+        elif opcao_alerta == "3":
+            dados = carregar_dados_json() # Carrega os dados do Json para analisar alerta
+            if dados is not None:
+                analisar_alerta_operacional(dados) # Executa a análise se conter algo
         elif opcao_alerta == "0":
             break
         else:
