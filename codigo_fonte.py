@@ -3,7 +3,7 @@
 # Bibliotecas
 import os
 
-# Importando funções
+# Importando funções do arquivo.py
 from arquivos import (cadastrar_registro, 
                       consultar_registros, 
                       cadastrar_alerta, 
@@ -12,8 +12,11 @@ from arquivos import (cadastrar_registro,
                       carregar_dados_json
 )
 
-# Importando regra lógica NCAS
+# Importando regra lógica NCAS do regras.py
 from regras import analisar_alerta_operacional
+
+# Importando função responsável pelos prompts NCAS do prompts.py
+from prompts import visualizar_prompts
 
 # Função para limpar a tela no terminal
 def limpar_tela():
@@ -95,8 +98,10 @@ def executar_sistema():
             print("\nAssistente Inteligente")
             print("Será implementado nas próximas etapas")
         elif opcao == "6":
-            print("\nVisualização de Prompts")
-            print("Será implementado nas próximas etapas")
+            # Carregando dados estruturados da colônia
+            dados = carregar_dados_json()
+            if dados is not None: # Exibe o prompt se o JSON for carregado corretamente
+                visualizar_prompts(dados)
         elif opcao == "7":
             print("\nVisualização de Logs")
             print("Será implementado nas próximas etapas")
