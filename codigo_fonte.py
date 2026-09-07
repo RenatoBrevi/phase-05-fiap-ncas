@@ -4,7 +4,7 @@
 import os
 
 # Importando funções
-from arquivos import cadastrar_registro, consultar_registros
+from arquivos import cadastrar_registro, consultar_registros, cadastrar_alerta, consultar_alertas
 
 # Função para limpar a tela no terminal
 def limpar_tela():
@@ -24,13 +24,39 @@ def exibir_menu():
     print("1 - Cadastrar Registro da Colônia")
     print("2 - Consultar Registros Salvos")
     print("3 - Consultar Dados da Colônia")
-    print("4 - Analisar Alerta Operacional")
+    print("4 - Alertas Operacionais")
     print("5 - Assistente Inteligente")
     print("6 - Visualizar Prompts")
     print("7 - Visualizar Logs")
     print("0 - Encerrar Sistema")
 
-# exibir_menu() # Testando a função.
+# Função responsável por exibir as opções relacionadas aos alertas operacionais
+def exibir_menu_alertas():
+    print("\n######### ALERTAS OPERACIONAIS ##########\n")
+    print("1 - Cadastrar Alerta Operacional")
+    print("2 - Consultar Alertas Cadastrados")
+    print("0 - Voltar ao Menu Principal")
+
+# Função para controlar o submenu relacionado aos alertas operacionais
+def gerenciar_alertas():
+    while True:
+        limpar_tela() # Limpando a tela antes de exibir o menu de alertas
+        exibir_cabecalho()
+        exibir_menu_alertas()
+
+        opcao_alerta = input("\nDigite a opção desejada: ")
+
+        if opcao_alerta == "1":
+            cadastrar_alerta()
+        elif opcao_alerta == "2":
+            consultar_alertas()
+        elif opcao_alerta == "0":
+            break
+        else:
+            print("\n[ERRO] - Opção inválida. Digite apenas uma opção entre 0 e 2.")
+
+        input("\n##### Pressione 'ENTER' para voltar ao MENU DE ALERTAS. #####")
+        
 
 # Função que será responsável por fazer o sistema principal NCAS funcionar.
 def executar_sistema():
@@ -50,8 +76,8 @@ def executar_sistema():
             print("\nConsulta aos Dados da Colônia")
             print("Será implementado nas próximas etapas")
         elif opcao == "4":
-            print("\nAnálise de Alertas")
-            print("Será implementado nas próximas etapas")
+            gerenciar_alertas()
+            continue # Faz com que o Python retorne ao while True principal
         elif opcao == "5":
             print("\nAssistente Inteligente")
             print("Será implementado nas próximas etapas")

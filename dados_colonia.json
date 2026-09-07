@@ -73,6 +73,16 @@
             "data_hora": "05/09/2026 22:24:27",
             "mensagem": "Diminuíção do oxigênio devido a baixa energia",
             "status": "Aberto"
+        },
+        {
+            "id": 3,
+            "modulo": "Cultivo e Alimentos",
+            "tipo": "Cultivo",
+            "prioridade": "Baixa",
+            "critico": false,
+            "data_hora": "07/09/2026 11:06:15",
+            "mensagem": "Pragas encontradas nas batatas",
+            "status": "Aberto"
         }
     ],
     "solicitacoes": [],
