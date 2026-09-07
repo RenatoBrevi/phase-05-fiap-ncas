@@ -18,6 +18,9 @@ from regras import analisar_alerta_operacional
 # Importando função responsável pelos prompts NCAS do prompts.py
 from prompts import visualizar_prompts
 
+# Importando assistente inteligente integrado ao Groq
+from ia_groq import assistente_inteligente
+
 # Função para limpar a tela no terminal
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear") # cls para limpar no Windows e clear no Linux/macOS
@@ -95,8 +98,10 @@ def executar_sistema():
             gerenciar_alertas()
             continue # Faz com que o Python retorne ao while True principal
         elif opcao == "5":
-            print("\nAssistente Inteligente")
-            print("Será implementado nas próximas etapas")
+            dados = carregar_dados_json()
+            if dados is not None:
+                assistente_inteligente(dados)
+                continue # Faz com que o Python retorne ao while True principal
         elif opcao == "6":
             # Carregando dados estruturados da colônia
             dados = carregar_dados_json()
