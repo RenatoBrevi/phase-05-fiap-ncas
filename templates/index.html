@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>NCAS - Aurora Siger</title>
+
+    <!--
+        url-for() pede ao Flask o endereço correto do arquivo
+        style.css dentro da pasta static
+    -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css')}}"
+    >
+
+</head>
+
+<body>
+    <main class="terminal">
+        <!-- Cabeçalho -->
+         <header class="cabecalho">
+            <div>
+                <h1> NCAS</h1>
+                <p>
+                    Núcleo Cognitivo da Aurora Siger
+                </p>
+            </div>
+            <div class="status">
+                {{ colonia["status_geral"]}}
+            </div>
+         </header>
+         <!-- Informações do sistema -->
+          <section class="sistema">
+            <p>
+                Sistema: {{ colonia["nome"] }}
+            </p>
+            <p>
+                Assistente Inteligente: ONLINE
+            </p>
+            <p>
+                Interface: Flask Web
+            </p>
+          </section>
+          <!-- Formulário -->
+           <section class="consulta">
+            <form
+                method="POST"
+                action="{{ url_for('index') }}"
+            >
+                <label for="pergunta">
+                    operador@aurora-siger:~$
+                </label>
+                <textarea
+                    id="pergunta"
+                    name="pergunta"
+                    maxlength="2000"
+                    placeholder="Digite uma pergunta para o NCAS..."
+                    required
+                >{{ pergunta }}</textarea>
+                <button type="submit">
+                    EXECUTAR CONSULTA
+                </button>
+            </form>
+           </section>
+           <!-- Mensagem de erro -->
+            {% if erro %}
+                <section class="saida erro">
+                    <p>[ERRO]</p>
+                    <pre>{{ erro }}</pre>
+                </section>
+            {% endif %}
+            <!-- Resposta da IA -->
+             {% if resposta %}
+                <section class="saida">
+                    <p>
+                        NCAS@aurora-siger:~$
+                    </p>
+                    <pre>{{ resposta }}</pre>
+                </section>
+             {% endif %}
+             <footer>
+                <p>
+                    NCAS // AURORA SIGER // SISTEMA OPERACIONAL
+                </p>
+             </footer>
+    </main>
+</body>
+
+</html>
