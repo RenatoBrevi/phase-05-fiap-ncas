@@ -73,7 +73,7 @@ def gerenciar_alertas():
         elif opcao_alerta == "0":
             break
         else:
-            print("\n[ERRO] - Opção inválida. Digite apenas uma opção entre 0 e 2.")
+            print("\n[ERRO] - Opção inválida. Digite apenas uma opção entre 0 e 3.")
 
         input("\n##### Pressione 'ENTER' para voltar ao MENU DE ALERTAS. #####")
         
