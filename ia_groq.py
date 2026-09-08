@@ -62,10 +62,13 @@ def enviar_prompt_groq(prompt, formato_json=False):
             {
                 "role": "system",
                 "content":
-                    "Você é o assistente ingeligente do "
+                    "Você é o assistente inteligente do "
                     "Núcleo Cognitivo da Aurora Siger (NCAS). "
                     "Responda sempre em português brasileiro, "
                     "com linguagem objetiva, técnica e profissional."
+                    "Em respostas textuais comuns, não utilize HTM, "
+                    "tabelas Markdown ou tags como <br>. "
+                    "Prefira texto simples, títulos e listas com hífen."
             },
             {
                 "role": "user",

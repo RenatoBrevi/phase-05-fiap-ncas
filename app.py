@@ -3,6 +3,8 @@
 # O NEVAGADOR ENVIA A PERGUNTA PARA O FLASK, O FLASK UTILIZA O IA_GROQ.PY PARA
 # CONVERSAR COM O GROQ
 
+import re
+
 # Importando os recursos necessários do Flask
 from flask import Flask, render_template, request
 
@@ -11,6 +13,40 @@ from ia_groq import enviar_prompt_groq
 
 # Importando dados estruturados da colônia
 from arquivos import carregar_dados_json
+
+# Função responsável por limpar caracteres de formatação enviados pela LLM
+# antes de exibir a resposta na interface web usando regular expression
+def limpar_resposta_ia(texto):
+    if not texto: # Caso nenhuma resposta seja recebida
+        return texto
+    
+    # Substituindo tags <br>, <br/> ou <br /> por quebra de linha
+    texto = re.sub(
+        r"<br\s*/?>",
+        "\n",
+        texto,
+        flags=re.IGNORECASE
+    )
+
+    # Remove marcação de negrito do markdown
+    texto = texto.replace("**", "")
+
+    # Remove marcação de itálico
+    texto = texto.replace("__", "")
+    
+    # Remove blocos de markdown
+    texto = texto.replace("```", "")
+
+    # Remove pipes utilizado em markdown
+    texto = texto.replace("|", " ")
+
+    # Remove espaço excessivo no final das linhas
+    texto = re.sub(r"[ \t]+\n", "\n", texto)
+    
+    # Evita mais de duas linhas vazias consecutivas
+    texto = re.sub(r"\n{3,}", "\n\n", texto)
+
+    return texto.strip()
 
 # Criando aplicação Flask
 app = Flask(__name__) # __name__ ajuda o Flask a localizar os arquivos do projeto
@@ -51,7 +87,10 @@ def index():
             # Envia a pergunta para a função que já conversa com A API
             resposta = enviar_prompt_groq(pergunta)
 
-            if resposta is None:
+            # Remove caracters de markdown e html antes de enviar a resposta ao navegador
+            if resposta is not None:
+                resposta = limpar_resposta_ia(resposta)
+            else:
                 erro = (
                     "Não foi possível obter uma resposta do Assistente Inteligente."
                 )
