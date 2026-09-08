@@ -83,7 +83,97 @@
             "data_hora": "07/09/2026 11:06:15",
             "mensagem": "Pragas encontradas nas batatas",
             "status": "Aberto"
-        }
+        },
+        {
+            "id": 4,
+            "modulo": "Habitação",
+            "tipo": "Temperatura",
+            "prioridade": "Alta",
+            "critico": false,
+            "data_hora": "06/09/2026 15:15:40",
+            "mensagem": "Queda de temperatura abaixo do ideal nos dormitórios",
+            "status": "Fechado"
+        },
+        {
+            "id": 5,
+            "modulo": "Laboratório",
+            "tipo": "Contaminação",
+            "prioridade": "Crítica",
+            "critico": true,
+            "data_hora": "06/09/2026 18:28:07",
+            "mensagem": "Possível contaminação detectada",
+            "status": "Aberto"
+        },
+        {
+            "id": 6,
+            "modulo": "Armazenamento",
+            "tipo": "Estoque baixo",
+            "prioridade": "Média",
+            "critico": false,
+            "data_hora": "06/09/2026 23:05:33",
+            "mensagem": "Reserva de água potável abaixo de 20% da capacidade",
+            "status": "Aberto"
+        },
+        {
+            "id": 7,
+            "modulo": "Segurança",
+            "tipo": "Pressurização",
+            "prioridade": "Crítica",
+            "critico": true,
+            "data_hora": "07/09/2026 00:19:52",
+            "mensagem": "Queda de pressão detectada na câmara de ar",
+            "status": "Aberto"
+        },
+        {
+            "id": 8,
+            "modulo": "Cultivo e Alimentos",
+            "tipo": "Umidade",
+            "prioridade": "Baixa",
+            "critico": false,
+            "data_hora": "07/09/2026 00:41:18",
+            "mensagem": "Umidade da estufa hidropônica fora do intervalo ideal",
+            "status": "Aberto"
+        },
+        {
+            "id": 9,
+            "modulo": "Energia",
+            "tipo": "Falha de painel solar",
+            "prioridade": "Alta",
+            "critico": false,
+            "data_hora": "07/09/2026 12:03:29",
+            "mensagem": "Painel solar 3 apresentando eficiência reduzida",
+            "status": "Aberto"
+        },
+        {
+            "id": 10,
+            "modulo": "Suporte à Vida",
+            "tipo": "Filtro de CO2",
+            "prioridade": "Alta",
+            "critico": true,
+            "data_hora": "07/09/2026 19:20:45",
+            "mensagem": "Filtro de CO2 próximo da saturação, substituição necessária",
+            "status": "Aberto"
+        },
+        {
+            "id": 11,
+            "modulo": "Comunicações",
+            "tipo": "Antena desalinhada",
+            "prioridade": "Baixa",
+            "critico": false,
+            "data_hora": "07/09/2026 22:37:12",
+            "mensagem": "Antena principal fora do alinhamento com o satélite",
+            "status": "Aberto"
+        },
+        {
+            "id": 12,
+            "modulo": "Armazenamento",
+            "tipo": "Temperatura de refrigeração",
+            "prioridade": "Crítica",
+            "critico": true,
+            "data_hora": "08/09/2026 01:52:03",
+            "mensagem": "Câmara fria de alimentos acima da temperatura segura de conservação",
+            "status": "Aberto"
+            }
     ],
     "solicitacoes": [],
     "interacoes": []

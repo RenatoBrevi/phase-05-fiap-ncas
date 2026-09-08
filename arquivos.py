@@ -56,7 +56,7 @@ def cadastrar_registro():
     # Cada elemento da lista representa uma linha que será gravada posteriormente no arquivo de texto.
     registro = [
         "\n" + "=" * 60 + "\n",
-        f"Data e Hora: {data_hora_formatada}\n"
+        f"Data e Hora: {data_hora_formatada}\n",
         f"Módulo: {modulo}\n",
         f"Tipo de Ocorrência: {tipo}\n",
         f"Prioridade: {prioridade}\n",
@@ -81,7 +81,7 @@ def consultar_registros():
     try:
         # Tentando abrir o arquivo no modo read
         with open(arquivo_registro, "r", encoding="utf-8") as arquivo:
-            linhas = arquivo.readlines() # recuperando as linhas do arquivo e armazenando o resultadona lista
+            linhas = arquivo.readlines() # recuperando as linhas do arquivo e armazenando o resultado na lista
 
         # Verificando se o arquivo está vazio
         if len(linhas) == 0:
@@ -270,7 +270,7 @@ def consultar_alertas():
     if dados is None:
         return
     
-    alertas = dados["alertas"] # Recuperando a lsita de alertas do dicionário
+    alertas = dados["alertas"] # Recuperando a lista de alertas do dicionário
 
     # Verificando se a lista está vazia
     if len(alertas) == 0:
