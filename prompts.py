@@ -125,10 +125,13 @@ Responda exclusivamente utilizando um objeto JSON válido com a seguinte estrutu
     "id_alerta": {alerta["id"]},
     "modulo": {alerta["modulo"]},
     "classificacao": "Baixa, Média, Alta ou Crítica",
-    "resumo": "Resumo objetivo da situação,
-    "acao_recomendada" "Ação recomendada ao centro de controle",
-    "necessita_intervencao_hunana": true ou false
+    "resumo": "Resumo objetivo da situação",
+    "acao_recomendada": "Ação recomendada ao centro de controle",
+    "necessita_intervencao_humana": true ou false
 }}
+
+No campo "necessita_intervencao_humana", utilize true ou false de acordo com a
+situação analisada.
 
 Não escreva nenhum texto antes ou depois do JSON.
 """
@@ -184,7 +187,7 @@ def visualizar_prompts(dados):
     print("\n" + "=" * 60)
     print("########## FEW-SHOT PROMPT ##########")
     print("=" * 60)
-    print("prompt_few_shot")
+    print(prompt_few_shot)
 
     # STRUCTURED OUTPUT
     print("\n" + "=" * 60)

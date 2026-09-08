@@ -9,7 +9,7 @@
 # C = alerta crítico
 # E = módulo essencial
 def regra_prioridade_original(aberto, critico, essencial):
-    return aberto and (critico and essencial) or (critico and not essencial)
+    return aberto and ((critico and essencial) or (critico and not essencial))
 
 # Função que respresenta a expressão booleana simplificada
 # Expressão simplificada:

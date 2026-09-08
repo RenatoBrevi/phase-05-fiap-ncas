@@ -156,6 +156,144 @@ footer {
     font-size: 12px;
 }
 
+/* Painel do NCAS*/
+.painel {
+    padding: 25px;
+    border-top: 1px solid #1c3024
+}
+
+.titulo-secao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.titulo-secao h2 {
+    margin: 0;
+    color: #57ff8a;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.titulo-secao span {
+    color: #648d70;
+    font-size: 12px;
+}
+
+/* Modulos */
+.grade-modulos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.modulo {
+    padding: 16px;
+    border: 1px solid #274433;
+    background: #080c10;
+}
+
+.modulo-tipo {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 10px;
+    color: #648d70;
+}
+
+.modulo h3 {
+    margin: 16px 0;
+    color: #d6ffe1;
+    font-size: 15px;
+}
+
+.modulo p {
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.modulo strong {
+    color: #57ff8a;
+}
+
+.status-modulo {
+    color: #57ff8a;
+}
+
+/*Alertas */
+.lista-alertas {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.alerta {
+    padding: 18px;
+    background: #080c10;
+    border-left: 3px solid #57ff8a;
+    border-top: 1px solid #274433;
+    border-right: 1px solid #274433;
+    border-bottom: 1px solid #274433;
+}
+
+.alerta-topo {
+    display: flex;
+    justify-content: space-between;
+    color: #57ff8a;
+    font-size: 12px;
+}
+
+.alerta h3 {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+.alerta p {
+    margin: 7px 0;
+    color: #a7c7af;
+}
+
+.alerta small {
+    color: #587663;
+}
+
+/* ANALISE DE ALERTA */
+.form-alerta {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+select {
+    width: 100%;
+    padding: 13px;
+    background: #080c10;
+    border: 1px solid #274433;
+    color: #d6ffe1;
+    font-family: inherit;
+    outline: none;
+}
+
+select:focus {
+    border-color: #57ff8a;
+}
+
+.acoes-alerta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.acoes-alerta button {
+    width: 100%
+}
+
+.resultado-alerta {
+    margin: 25px 0 0;
+}
+
 /* Tela menor*/
 @media (max-width: 600px) {
     body {
@@ -169,5 +307,28 @@ footer {
 
     button {
         width: 100%
+    }
+
+    .grade-modulos {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes-alerta {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-secao {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 900px) {
+    .grade-modulos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .acoes-alerta {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

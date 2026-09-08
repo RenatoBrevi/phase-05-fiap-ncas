@@ -50,11 +50,190 @@
                 Interface: Flask Web
             </p>
           </section>
+          <!-- Módulos do NCAS -->
+           <section class="painel">
+                <div class="titulo-secao">
+                    <h2>MÓDULOS DA COLÔNIA</h2>
+                    <span>
+                        {{ modulos|length }} módulos registrados
+                    </span>
+                </div>
+                <div class="grade-modulos">
+                    {% for modulo in modulos %}
+                        <article class="modulo">
+                            <div class="modulo-topo">
+                                <span>
+                                    MÓDULO {{ modulo["id"] }}
+                                </span>
+                                
+                                <span class="status-modulo">
+                                    {{ modulo["status"] }}
+                                </span>
+                            </div>
+
+                            <h3>
+                                {{ modulo["nome"] }}
+                            </h3>
+
+                            <p>
+                                Essencia:
+                                {% if modulo["essencial"] %}
+                                    <strong>SIM</strong>
+                                {% else %}
+                                    <span>NÃO</span>
+                                {% endif %}
+                            </p>
+                        </article>
+                    {% endfor %}
+                </div>
+           </section>
+
+           <!-- Alertas Operacionais -->
+            <section class="painel">
+                <div class="titulo-secao">
+                    <h2>ALERTAS OPERACIONAIS</h2>
+
+                    <span>
+                        {{ alertas|length }} alertas
+                    </span>
+                </div>
+
+                <div class="lista-alertas">
+                    {% for alerta in alertas %}
+                        <article class="alerta">
+                            <div class="alerta-topo">
+                                <span>
+                                    ALERTA #{{ alerta["id"] }}
+                                </span>
+
+                                <span>
+                                    {{ alerta["prioridade"] }}
+                                </span>
+                            </div>
+
+                            <h3>
+                                {{ alerta["modulo"] }}
+                            </h3>
+
+                            <p>
+                                Tipo:
+                                {{ alerta["tipo"] }}
+                            </p>
+
+                            <p>
+                                Status:
+                                {{ alerta["status"] }}
+                            </p>
+
+                            <p>
+                                {{ alerta["mensagem"] }}
+                            </p>
+
+                            <small>
+                                {{ alerta[data_hora] }}
+                            </small>
+                        </article>
+                    {% else %}
+                    <p>
+                        Nenhum alerta operacional cadastrado.
+                    </p>
+                {% endfor %}
+                </div>
+            </section>
+            <!-- Análise inteligente de alerta -->
+             <section class="painel">
+                <div class="titulo-secao">
+                    <h2>ANÁLISE DE ALERTA</h2>
+
+                    <span>
+                        NCAS ANALYTICS
+                    </span>
+
+                </div>
+
+                <form
+                    class="form-alerta"
+                    method="POST"
+                    action="{{ url_for('analisar_alerta') }}"
+                >
+                    <label for="alerta_id">
+                        Selecione o alerta:
+                    </label>
+
+                    <select
+                        id="alerta_id"
+                        name="alerta_id"
+                        required
+                    >
+
+                        <option value="">
+                            -- Escolha um Alerta --
+                        </option>
+
+                        {% for alerta in alertas %}
+                            <option
+                                value="{{ alerta['id'] }}"
+                            >
+
+                                #{{ alerta["id"] }}
+                                -
+                                {{ alerta["modulo"] }}
+                                -
+                                {{ alerta["prioridade"] }}
+
+                        </option>
+                    {% endfor %}
+                    </select>
+
+                    <div class="acoes-alerta">
+                        <button
+                            type="submit"
+                            name="acao"
+                            value="zero"
+                        >
+                            ZERO-SHOT
+                        </button>
+
+                        <button
+                            type="submit"
+                            name="acao"
+                            value="few"
+                        >
+                            FEW-SHOT
+                        </button>
+
+                        <button
+                            type="submit"
+                            name="acao"
+                            value="structured"
+                        >
+                            STRUCTURED OUTPUT
+                        </button>
+
+                        <button
+                            type="submit"
+                            name="acao"
+                            value="regra"
+                        >
+                            REGRA BOOLEANA
+                        </button>
+                    </div>
+                </form>
+                {% if resultado_alerta %}
+                    <div class="saida resultado-alerta">
+                        <p>
+                            NCAS@analysis:~$
+                        </p>
+
+                        <pre>{{ resultado_alerta }}</pre>
+                    </div>
+                {% endif %}
+             </section>
           <!-- Formulário -->
            <section class="consulta">
             <form
                 method="POST"
-                action="{{ url_for('index') }}"
+                action="{{ url_for('perguntar') }}"
             >
                 <label for="pergunta">
                     operador@aurora-siger:~$
