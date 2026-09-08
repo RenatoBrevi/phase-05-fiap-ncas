@@ -1,0 +1,173 @@
+/*INTERFACE WEB DO SISTEMA NCAS DA AURORA SIGER*/
+
+/* Configuração geral da página */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #080c10;
+    color: #d6ffe1;
+    font-family:'Courier New', Courier, monospace;
+    padding: 40px 20px;    
+}
+
+/* Terminal principal*/
+.terminal {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    background: #0d1318;
+    border: 1px solid #274433;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 255, 120, 0.08);
+}
+
+/* Cabeçalho */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    border-bottom: 1px solid #274433;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 32px;
+    letter-spacing: 4px;
+    color: #57ff8a;
+}
+
+.cabecalho p {
+    margin: 5px 0 0;
+    color: #8cad95;
+}
+
+/*Status*/
+.status {
+    border: 1px solid #57ff8a;
+    padding: 8px 15px;
+    color: #57ff8a;
+    font-size: 13px;
+}
+
+/*Dados do sistema */
+.sistema {
+    padding: 20px 25px;
+    border-bottom: 1px solid #1c3024;
+    color: #7ca988;
+}
+
+.sistema p {
+    margin: 5px 0;
+}
+
+/*Área da pergunta*/
+.consulta {
+    padding: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    color: #57ff8a;
+    font-weight: bold;
+}
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+    resize: vertical;
+    padding: 15px;
+    background: #080c10;
+    border: 1px solid #274433;
+    color: #d6ffe1;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+textarea:focus {
+    border-color: #57ff8a;
+}
+
+/* Botão */
+button {
+    width: fit-content;
+    padding: 12px 20px;
+    border: 1px solid #57ff8a;
+    background: transparent;
+    color: #57ff8a;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #57ff8a;
+    color: #080c10;
+}
+
+/* Saída do NCAS*/
+.saida {
+    margin: 0 25px 25px;
+    padding: 20px;
+    border: 1px solid #274433;
+    background: #080c10;
+}
+
+.saida > p {
+    margin-top: 0;
+    color: #57ff8a;
+}
+
+.saida pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #d6ffe1;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+/* ERROS*/
+.saida.erro {
+    border-color: #9f4141;
+    color: #ff8888;
+}
+
+.saida.erro > p {
+    color: #ff8888;
+}
+
+/* Rodapé */
+footer {
+    padding: 15px 25px;
+    border-top: 1px soldi #1c3024;
+    color: #466750;
+    font-size: 12px;
+}
+
+/* Tela menor*/
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    button {
+        width: 100%
+    }
+}
